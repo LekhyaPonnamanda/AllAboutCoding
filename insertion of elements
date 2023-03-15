@@ -1,0 +1,27 @@
+#include<stdio.h>
+void main()
+{
+    int a[90],i,pos,n,size;
+    printf("enter size of array");scanf("%d",&size);
+    for(i=0;i<size;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("enter element and position");
+    scanf("%d %d",&n,&pos);
+    if(pos<=0 || pos>size+1)  // 1,2,3,4..after value i.e 4,we can insert any value since consecutive location
+    {
+        printf("not possible\n");
+        exit(1);
+    }
+    for(i=size-1;i>=pos-1;i--)
+    {
+        a[i+1]=a[i];
+    }
+    a[pos-1]=n;
+    size++;
+    for(i=0;i<size;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
