@@ -1,0 +1,43 @@
+#include<stdio.h>
+void bs(int a[],int n,int key);
+void main()
+{
+    int a[80],n,i,key;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    scanf("%d",&key);
+    bs(a,n,key);
+}
+void bs(int a[80],int n,int key)
+{
+    int high,low,mid,flag;
+    flag=0;low=0;high=n-1;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        if(a[mid]==key)
+        {
+            flag=1;
+            break;
+        }
+        else if(a[mid]>key)
+        {
+            high=mid-1;
+        }
+        else 
+        {
+            low=mid+1;
+        }
+    }
+    if(flag==1)
+    {
+        printf("%d found at %d location",key,mid+1);
+    }
+    else
+    {
+        printf("not found");
+    }
+}
