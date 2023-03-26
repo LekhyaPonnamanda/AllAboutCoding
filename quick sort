@@ -1,0 +1,62 @@
+#include<stdio.h>
+void Qsort(int x[],int);
+void sort(int x[],int,int);
+int main()
+{
+    int x[50],i,n;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&x[i]);
+    }
+    Qsort(x,n);
+    printf("sorted array\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",x[i]);
+    }
+    return 0;
+}
+void Qsort(int x[50],int n)
+{
+    sort(x,0,n-1);
+}
+void sort(int x[50],int low,int high)
+{
+    int pivot,l,h;
+    l=low;h=high;
+    pivot=x[low];
+    while(low<high)
+    {
+        while((low<high)&&(x[high]>pivot))
+        {
+            high--;
+        }
+        if(low!=high)
+        {
+            x[low]=x[high];
+            low++;
+        }
+        while((x[low]<pivot)&&(low<high))
+        {
+            low++;
+        }
+        if(low!=high)
+         {
+            x[high]=x[low];
+            high--;
+        }
+    }
+    x[low]=pivot;
+    pivot=low;
+    low=l;
+    high=h;
+    if(low<pivot)
+    {
+        sort(x,low,pivot-1);
+    }
+    if(high>pivot)
+    {
+        sort(x,pivot+1,high);
+    }
+}
