@@ -1,0 +1,33 @@
+#include<stdio.h>
+void main()
+{
+    int n,i=0,a[90];
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    swap(a,n);
+}
+void swap(int a[90],int n)
+{
+    swapalternative(a,n);
+}
+void swapalternative(int a[90],int n)
+{
+    int temp,i;
+    for(i=0;i<n;i+=2)
+    {
+        temp=a[i];
+        a[i]=a[i+1];
+        a[i+1]=temp;
+    }
+    printnum(a,n);
+}
+void printnum(int a[90],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
