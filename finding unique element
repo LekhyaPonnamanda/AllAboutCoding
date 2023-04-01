@@ -1,0 +1,15 @@
+#include<stdio.h>
+void main()
+{
+    int ans=0,i,size,a[90];
+    scanf("%d",&size);
+    for(i=0;i<size;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<size;i++)
+    {
+        ans=ans^a[i];
+     }
+     printf(" %d ",ans);
+}
