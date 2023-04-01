@@ -1,0 +1,65 @@
+/*void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
+    int i = 0, j = 0, k = 0;
+    int* c = (int*) malloc((m+n) * sizeof(int));
+    
+    while (i < m && j < n) {
+        if (*(nums1+i) <= *(nums2+j)) {
+            c[k++] = *(nums1+i++);
+        } else {
+            c[k++] = *(nums2+j++);
+        }
+    }
+    
+    while (i < m) {
+        c[k++] = *(nums1+i++);
+    }
+    
+    while (j < n) {
+        c[k++] = *(nums2+j++);
+    }
+    
+    for (int x = 0; x < m + n; x++) {
+        *(nums1+x) = c[x];
+    }
+    
+    free(c);
+}*/
+#include<stdio.h>
+void main()
+{
+    int a[90],i,j,k,b[90],c[90],n1,n2;
+    scanf("%d %d",&n1,&n2);
+    for(i=0;i<n1;i++)
+    {
+        scanf("%d",&a[i]); 
+    }
+    for(j=0;j<n2;j++)
+    {
+        scanf("%d",&b[j]);
+    }
+    i=0;j=0;k=0;
+    while(i<n1 && j<n2)
+    {
+        if(a[i]<b[j])
+        {
+            c[k++]=a[i++];
+        }
+        else 
+        {
+            c[k++]=b[j++];
+        }
+    }
+    if(i>n1-1 && j<n2) //while(i<n1)
+    {
+      c[k++]=b[j++];
+    }
+    else             //while(j<n2)
+    {
+        c[k++]=a[i++];
+    }
+    for(k=0;k<i+j;k++)
+    {
+        printf("%d ",c[k]);
+    }
+    
+}
