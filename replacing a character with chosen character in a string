@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+    char str1[30];
+    char l;
+    int i,n,pos;
+    gets(str1);
+    puts(str1);
+    scanf("%d %c",&pos,&l);
+    while(str1[i]!='\0')
+    {
+        ++i;
+        
+        if(i==pos)
+        {
+            str1[i-1]=l;
+
+        }
+       
+    }
+    puts(str1);
+    
+}
