@@ -1,0 +1,60 @@
+#include<stdio.h>
+void quicksort(int [],int,int);
+int partition(int [],int,int);
+void main()
+{
+    int a[10],i,n;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    quicksort(a,0,n-1);
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
+void quicksort(int a[10],int lb,int ub)
+{
+    int p,i,j;
+    i=lb+1;
+    j=ub;
+    if(lb<ub)
+    {
+     p=partition(a,lb,ub);
+     quicksort(a,lb,p-1);
+     quicksort(a,p+1,ub);
+    }
+}
+int partition(int a[10],int lb,int ub)
+{
+    int pivot,temp;
+    pivot=a[lb];
+    int i,j;
+    i=lb+1;
+    j=ub;
+    while(i<=j)
+    {
+        while(i<=j && pivot>a[i])
+        {
+            i++;
+        }
+        while(i<=j && pivot<a[j])
+        {
+            j--;
+        }
+        if(i<j)
+        {
+            temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+            
+        }
+        
+    }
+    temp=a[lb];
+    a[lb]=a[j];
+    a[j]=temp;
+    return j;
+}
