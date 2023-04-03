@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+#define max 10
+void main()
+{
+    char str[max];int top;
+    gets(str);
+    reverse(str);
+    printf("reverse is %s",str);
+}
+void reverse(char str[])
+{
+   int len=strlen(str);
+   char stack[len];
+   int top=-1;
+   for(int i=0;i<len;i++)
+   {
+       stack[++top]=str[i];
+   }
+   for(int i=0;i<len;i++)
+   {
+       str[i]=stack[top--];
+   }
+}
