@@ -1,0 +1,72 @@
+#include<stdio.h>
+#define n 5
+
+void bubble_sort(int a[]);
+int binary_search(int a[], int key);
+
+int main()
+{
+    int a[n], i, key;
+    
+    // Input the array elements
+    for(i=0; i<n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+    
+    // Sort the array
+    bubble_sort(a);
+    
+    // Print the sorted array
+    printf("Sorted Array: ");
+    for(i=0; i<n; i++)
+        printf("%d ", a[i]);
+    
+    // Input the search key
+    printf("\nEnter the search key: ");
+    scanf("%d", &key);
+    
+    // Perform binary search
+    int result = binary_search(a, key);
+    
+    // Print the search result
+    if(result == -1)
+        printf("%d not found in the array\n", key);
+    else
+        printf("%d found at index %d\n", key, result);
+        
+    return 0;
+}
+
+void bubble_sort(int a[])
+{
+    int i, j, temp;
+    for(i=0; i<n-1; i++)
+    {
+        for(j=0; j<n-i-1; j++)
+        {
+            if(a[j] > a[j+1])
+            {
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;
+            }
+        }
+    }
+}
+
+int binary_search(int a[], int key)
+{
+    int l=0, h=n-1, mid;
+    while(l <= h)
+    {
+        mid = (l + h) / 2;
+        if(a[mid] == key)
+            return mid;
+        else if(a[mid] < key)
+            l = mid + 1;
+        else
+            h = mid - 1;
+    }
+    return -1;
+}
