@@ -1,0 +1,53 @@
+#include<stdio.h>
+#define n 5
+int a[n],top=-1;
+void push(int[]);
+void pop();
+void main()
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    push(a);
+    pop();
+}
+void push(int a[n])
+{
+    int i=n-1;int stack[n];
+    if(top==n-1)
+    {
+        printf("stack full");
+    }
+    else
+    {
+        while(top!=n-1 && i>=0)
+        {
+            top++;
+           stack[top]=a[i];
+           printf("%d ",stack[top]);
+            i--;
+        }
+    }
+}
+void pop()
+{
+    int stack[n];int i=0;int x[n];
+   if(top==-1) 
+   {
+       printf("no element to remove\n");
+   }
+   else
+   {
+    while(top!=-1) 
+     {
+         x[i]=stack[top];
+         top--;
+     }
+       printf("popped elements are\n");
+         for(i=0;i<n;i++)
+         printf("%d-%d index\n",x[i],i);
+     
+   }
+}
