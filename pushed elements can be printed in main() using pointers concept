@@ -1,0 +1,40 @@
+#include <stdio.h>
+#define n 5
+
+void push1(int[], int*);
+int a[n];
+int top = -1;
+int stack[n];
+
+int main()
+{
+    int i;
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    push1(a, stack);
+
+    printf("Elements in the stack: ");
+    for (i = 0; i <= top; i++) {
+        printf("%d ", stack[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+void push1(int a[n], int *stack)
+{
+    int i = 0;
+    if (top == n - 1) {
+        printf("stack is full");
+    }
+    else {
+        while (top != n - 1) {
+            ++top;
+            stack[top] = a[i];
+            printf("%d ", stack[top]);
+            i++;
+        }
+    }
+}
