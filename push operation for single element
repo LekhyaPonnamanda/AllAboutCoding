@@ -1,0 +1,37 @@
+#include<stdio.h>
+#define n 1
+void push1(int);
+int a[n];int top=-1;int stack[n];
+void main()
+{
+    int a=9;
+    push1(a);
+    int b=90;
+    push(b);
+}
+void push1(int a)
+{
+    int stack[n];int i;
+    if(top==n-1)
+    {
+        printf("stack is full");
+    }
+    else
+    {
+     stack[++top]=a;
+     printf("%d ",stack[top]);
+    }
+}
+void push(int b)
+{
+    int stack[n];int i;
+    if(top==n-1)
+    {
+        printf("stack is full");
+    }
+    else
+    {
+     stack[++top]=b;
+     printf("%d ",stack[top]);
+    }
+}
