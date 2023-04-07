@@ -1,0 +1,108 @@
+#include <stdio.h>
+#define n 5
+
+void push1(int[]);
+void pop();
+void viewtop();
+void isfull();
+void isempty();
+void display();
+int a[n];
+int top = -1;
+int stack[n];
+
+int main()
+{
+    int i;
+    for (i = 0; i < n; i++)
+    scanf("%d", &a[i]);
+    push1(a);
+    viewtop();
+    isfull();
+    pop();
+    isempty();
+    display();
+   
+    return 0;
+}
+
+void push1(int a[n])
+{
+    int i = 0;
+    if (top == n - 1) {
+        printf("stack is full");
+    }
+    else {
+        while (top != n - 1) {
+            ++top;
+            stack[top] = a[i];
+            printf("\n %d ", stack[top]);
+            i++;
+        }
+    }
+}
+void viewtop()
+{
+    if(top==-1)
+    {
+        printf("\nnot possible\n");
+    }
+    else
+    {
+      printf("\n %d is top value\n",stack[top]);
+    }
+}
+void isfull()
+{
+    if(top==n-1)
+    {
+        printf("full\n");
+    }
+    else
+    {
+        printf("not full\n");
+    }
+}
+void display()
+{
+    if(top==-1)
+    {
+        printf("\n no eleemnts \n");
+    }
+    else
+    {
+        while(top!=-1)
+        {
+            printf("%d ",stack[top]);
+            top--;
+        }
+    }
+}
+void pop()
+{
+    if(top==-1)
+    {
+        printf("\n no element to remove\n");
+    }
+    else
+    {
+        while(top!=-1)
+       {
+         int x=stack[top];
+         printf("\n%d ",x);
+         top--;
+         
+       }
+    }
+}
+void isempty()
+{
+    if(top==-1)
+    {
+        printf("stack is empty\n");
+    }
+    else
+    {
+        printf("stak is not empty");
+    }
+}
