@@ -1,0 +1,43 @@
+#include<stdio.h>
+#define n  5
+void push1(int[]);
+void display();
+int a[n];int top=-1;int stack[n];
+void main()
+{
+    int i;
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    push1(a);
+    for(i=0;i<n;i++)
+    printf("%d ",a[i]);
+    display();
+    
+}
+void push1(int a[n])
+{
+    int stack[n];int i;
+    if(top==n-1)
+    {
+        printf("stack is full");
+    }
+    else
+    {
+        while(top!=n-1)
+         {
+             ++top;
+             stack[top]=a[i];
+            printf("%d is pushed %d index\n",stack[top],i);
+            i++;
+         }
+    }
+    
+}
+void display()
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("\n%d ",a[i]);
+    }
+}
