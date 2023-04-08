@@ -1,0 +1,56 @@
+#include<stdio.h>
+#define n 10
+char str[n];char stack[n];
+top=-1;
+void push(char[],int);
+void pop();
+void main()
+{
+    gets(str);int i=0,l=0;
+    while(str[i]!='\0')
+    {
+        i++;l++;
+    }
+    push(str,l);
+    pop();
+}
+void push(char str[],int l)
+{
+    int i=0;
+    
+    while(i<l)
+    {
+      if(top==n-1)
+    {
+        printf("stack is full");
+        break;
+    }
+    else
+    {
+        
+        ++top;
+        stack[top]=str[i];
+        printf("%c ",stack[top]);
+        i++;
+        
+    }
+ }
+}
+void pop()
+{
+    if(top==-1)
+    {
+        printf("stack is empty");
+    }
+    else
+    {
+        printf("after popping\n");
+        while(top!=-1)
+        {
+            char c=str[top];
+            printf("%c",c);
+            top--;
+            
+        }
+    }
+}
