@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#define n 70
+int top=-1;int stack[n];
+void push(int);
+int pop();
+void main()
+{
+    char str[n];
+    int i,op1,op2,res;
+    scanf("%s",str);
+    i=0;
+    while(str[i]!='\0')
+    {
+        if(isdigit(str[i]))
+        {
+            push(str[i]-'0');
+        }
+        else
+        {
+            op1=pop();
+            op2=pop();
+            switch(str[i])
+            {
+                case '+':res=op2+op1;break;
+                case '-':res=op2-op1;break;
+                case '*':res=op2*op1;break;
+                case '/':
+                if(op1==0)
+                {
+                    printf("division by zero");exit(0);
+                }
+                res=op2/op1;break;
+                default:printf("invalid operator");exit(0);
+            }
+            push(res);
+        }
+        i++;
+    }
+    if(top==-1)
+    {
+        printf("invalid expression entered");
+       
+    }
+    else
+    {
+         printf("res=%d\t",stack[top]);
+    }
+}
+void push(int item)
+{
+     if(top==n-1)
+    {
+        printf("stack is full");
+        exit(0);
+    }
+    else
+    {
+        top++;
+        stack[top]=item;
+       
+    }
+  
+}
+int pop()
+{
+    if(top==-1)
+    {
+        printf("stack is empty");
+        exit(0);
+    }
+    else
+    {
+        int x=stack[top];
+        top--;
+        return x;
+    }
+}
