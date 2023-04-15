@@ -1,0 +1,29 @@
+//in this we are taking candidate element as the element from the 0th index and comparing with remaining elements,if they are equal count becomes increment else decrement until 0 and then replace with the current ith index element till end of array(i.e,i<numsSize)
+and finally candidate element compared with all elements in another loop and increment count.and check if it is >numsSize/2.and return its candidate value
+
+int majorityElement(int* nums, int numsSize) {
+    int candidate = nums[0], count = 1;
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] == candidate) {
+            count++;
+        } else {
+            count--;
+            if (count == 0) {
+                candidate = nums[i];
+                count = 1;
+            }
+        }
+    }
+    // Check if the candidate element occurs more than n/2 times
+    count = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] == candidate) {
+            count++;
+        }
+    }
+    if (count > numsSize / 2) {
+        return candidate;
+    } else {
+        return -1;
+    }
+}
