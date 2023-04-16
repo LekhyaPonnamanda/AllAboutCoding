@@ -1,0 +1,20 @@
+int detectCapitalUse(char * word){
+  int i = 0, capital_count = 0, length = strlen(word);
+    int first_capital = 0;
+
+    if (*(word+0) >= 'A' && *(word+0) <= 'Z') {
+        first_capital = 1;
+    }
+
+    for (i = 1; i < length; i++) {
+        if (*(word+i)>= 'A' && *(word+i) <= 'Z') {
+            capital_count++;
+        }
+    }
+
+    if ((first_capital && capital_count== length-1 || first_capital==length || capital_count==0)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
