@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    int i, j, a[80], c[80], k = 0, n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    // Check for duplicates
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (a[i] == a[j]) {
+                // Check if this element has already been printed
+                int found = 0;
+                for (int l = 0; l < k; l++) {
+                    if (c[l] == a[i]) {
+                        found = 1;
+                        break;
+                    }
+                }
+                if (!found) {
+                    c[k] = a[i];
+                    printf("%d\n", c[k]);
+                    k++;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
