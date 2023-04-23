@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define n 50
+int front=-1,rear=-1;
+int q[n],x;
+void insert(int);
+int delete();
+void display();
+int peek();
+int main()
+{
+    printf("1.insert\n 2.delete\n 3.display\n 4.peek\n 5.exit\n");
+    while(1)
+    {
+        int ch;
+        printf("enter ur choice\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:printf("enter a number to insert into queue\n");
+                   scanf("%d",&x);
+                   insert(x);
+                   break;
+            case 2:x=delete();
+                   printf("%d is deleted fron queue\n",x);
+                   break;
+            case 3:display();
+                   break;
+            case 4:printf("%d is top element in queue\n",q[rear]);
+                   break;
+            case 5:exit(1);
+                   break;
+            default:printf("invalid operation\n");
+                   
+        }
+    }
+    return 0;
+}
+void insert(int x)
+{
+    if(rear==n-1 && front==0)
+    {
+       printf("queue is full\n");
+    }
+    else if(rear==-1 && front==-1)
+    {
+        rear++;front++;
+        q[rear]=x;
+    }
+    else
+    {
+        rear++;
+        q[rear]=x;
+    }
+    printf("%d is inserted into queue\n",x);
+}
+int delete()
+{
+    if((front==-1 && rear==-1) || (front==rear+1))
+    {
+        return -1;
+    }
+    else
+    {
+       
+        x=q[front];
+        front++;
+        return x;
+    }
+}
+void display()
+{
+    int i;
+    for(i=front;i<=rear;i++)
+    {
+        printf("%d\n",q[i]);
+    }
+}
