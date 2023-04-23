@@ -1,0 +1,16 @@
+//we move till the ith and jth element are unequal by incrementing i.if both are equal,then move the jth element to ith position
+so that dissimilar elements come by overwritten on duplicate elements.this process continues until j reaches maximumsize.
+
+int removeDuplicates(int* nums, int numsSize){
+    int i=0;
+    for(int j=1;j<numsSize;j++)
+    {
+        if(*(nums+j)!=*(nums+i))
+        {
+            i++;
+
+        }
+        *(nums+i)=*(nums+j);
+    }
+      return i+1;
+}
