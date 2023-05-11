@@ -1,0 +1,109 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node nptr;
+void insert_beg(int);
+void insert_end(int);
+void insert_pos(int,int);
+void display();
+nptr *head,*temp,*p;
+struct node
+{
+    int data;
+    struct node *link;
+};
+void main()
+{
+    int ch,ele,pos;
+    printf("1.insert_beg\n 2.insert_end\n 3.insert_pos\n 4.display\n 5.exit\n");
+    while(1)
+    {
+        printf("enter ur choice\n");
+        scanf("%d",&ch);
+      switch(ch)
+      {
+        case 1:printf("enter element\n");
+               scanf("%d",&ele);
+               insert_beg(ele);
+               break;
+        case 2:printf("enter element\n");
+               scanf("%d",&ele);
+               insert_end(ele);
+               break;
+        case 3:printf("enter element\n");
+               scanf("%d",&ele);
+               printf("enter position to be inserted\n");
+               scanf("%d",&pos);
+               insert_pos(ele,pos);
+               break;
+        case 4:display();
+               break;
+        case 5:exit(1);
+               break;
+               
+    }
+  }
+}
+void insert_beg(int ele)
+{
+    p=(nptr *)malloc(sizeof(nptr));
+    p->data=ele;
+    if(head==NULL)
+    {
+        p->link=NULL;
+          
+    }
+    else
+    {
+       p->link=head;
+    }
+     head=p; 
+}
+void insert_end(int ele)
+{
+    p=(nptr *)malloc(sizeof(nptr));
+    p->data=ele;
+    if(head==NULL)
+    {
+        p->link=NULL;
+        head=p;
+    }
+    else
+    {
+        temp=head;
+        while((temp->link)!=NULL)
+        {
+            temp=temp->link;
+        }
+        temp->link=p;
+    }
+    p->link=NULL;
+}
+void insert_pos(int ele,int pos)
+{
+    p=(nptr *)malloc(sizeof(nptr));
+    p->data=ele;
+    if(head==NULL || pos==1)
+    {
+       insert_beg(ele);
+    }
+    else
+    {
+        temp=head;int c=1;
+        while((temp->link)!=NULL && c<pos-1)
+        {
+            temp=temp->link;
+        }
+        p->link=temp->link;
+        temp->link=p;
+    }
+}
+void display()
+{
+    temp=head;
+    while((temp->link)!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->link;
+    }
+    printf("%d ",temp->data);
+}
