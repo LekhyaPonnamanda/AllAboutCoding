@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node nptr;
+void display(nptr *head);
+nptr* insert_beg(int,nptr *head);
+nptr* delete_beg(nptr *head);
+nptr  *head,*temp,*ptr;
+struct node 
+{
+    int data;
+    struct node *link;
+};
+void main()
+{
+    int ch,ele;
+    printf("1.insert_beg\n 2.delete_beg\n 3.display\n 4.exit\n");
+    while(1)
+    {
+        printf("enter ur choice\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:printf("enter element\n");
+                   scanf("%d",&ele);
+                   head=insert_beg(ele,head);
+                   break;
+            case 2:head=delete_beg(head);
+                   break;
+            case 3:display(head);
+                   break;
+            case 4:exit(1);
+                  
+        }
+    }
+}
+nptr* insert_beg(int ele,nptr *head)
+{
+    ptr=(nptr *)malloc(sizeof(nptr));
+    ptr->data=ele;
+    if(head==NULL)
+    {
+        ptr->link=NULL;
+        head=ptr;
+    }
+    else
+    {
+        ptr->link=head;
+        head=ptr;
+    }
+    return head;
+}
+nptr* delete_beg(nptr *head)
+{
+    temp=head;
+    if(head==NULL)
+    {
+        printf("not possible\n");
+    }
+    else if(head->link==NULL)
+    {
+        free(temp);
+        head=NULL;
+    }
+    else
+    {
+         
+        head=head->link;
+        temp->link=NULL;
+         free(temp);
+       
+    }
+    return head;
+}
+void display(nptr *head)
+{
+    temp=head;
+    while((temp->link)!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->link;
+    }
+    printf("%d ",temp->data);
+}
