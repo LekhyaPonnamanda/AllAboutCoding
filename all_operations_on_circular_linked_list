@@ -1,0 +1,214 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node nptr;
+nptr* insert_beg(int,nptr*);
+nptr* insert_end(int,nptr*);
+nptr* insert_pos(int,nptr*,int);
+nptr* delete_beg(nptr*);
+nptr* delete_end(nptr*);
+nptr* delete_pos(nptr*,int);
+void display(nptr*);
+nptr* temp,*head,*sln,*ptr,*p;
+struct node 
+{
+    int data;
+    struct node *link;
+};
+void main()
+{
+    int ch,ele,pos;
+    printf("1.insert_beg\n 2.insert_end\n 3.insert_pos\n 4.delete_beg\n 5.delete_end\n 6.insert_pos\n 7.display\n 8.exit\n");
+    while(1)
+    {
+        printf("enter ur choice\n");
+        scanf("%d",&ch);
+     switch(ch)
+     {
+        case 1:printf("enter element\n");
+               scanf("%d",&ele);
+               head=insert_beg(ele,head);
+               break;
+        case 2:printf("enter element\n");
+               scanf("%d",&ele);
+               head=insert_end(ele,head);
+               break;
+        case 3:printf("enter position to insert\n");
+               scanf("%d",&pos);
+               printf("enter element\n");
+               scanf("%d",&ele);
+               head=insert_pos(ele,head,pos);
+               break;
+        case 4:head=delete_beg(head);
+               break;
+        case 5:head=delete_end(head);
+               break;
+        case 6:printf("enter position to delete\n");
+               scanf("%d",&pos);
+               head=delete_pos(head,pos);
+               break;
+        case 7:display(head);
+               break;
+        case 8:exit(1);
+    }
+    }
+}
+nptr* insert_beg(int ele,nptr* head)
+{
+    ptr=(nptr *)malloc(sizeof(nptr));
+    ptr->data=ele;
+    if(head==NULL)
+    {
+        ptr->link=ptr;
+        head=ptr;
+    }
+    else
+    {
+         temp=head;
+        ptr->link=head;
+        while((temp->link)!=head)
+        {
+            temp=temp->link;
+        }
+        temp->link=ptr;
+        head=ptr;
+    }
+     return head;
+    
+}
+nptr* insert_end(int ele,nptr* head)
+{
+    ptr=(nptr *)malloc(sizeof(nptr));
+    ptr->data=ele;
+    if(head==NULL)
+    {
+        ptr->link=head;
+        head=ptr;
+    }
+    else
+    {
+        temp=head;
+        while((temp->link)!=head)
+        {
+            temp=temp->link;
+        }
+        temp->link=ptr;
+        ptr->link=head;
+    }
+     return head;
+}
+nptr* insert_pos(int ele,nptr* head,int pos)
+{
+    ptr=(nptr*)malloc(sizeof(nptr));
+    ptr->data=ele;
+    if(head==NULL ||pos==1)
+    {
+        head=insert_beg(ele,head);
+    }
+    else
+    {
+        temp=head;int c=1;
+        while((temp->link)!=head && c<=pos-1)
+        {
+            sln=temp;
+            temp=temp->link;c++;
+        }
+        ptr->link=sln->link;
+        sln->link=ptr;
+    }
+    return head;
+}
+void display(nptr* head)
+{
+    temp=head;
+    while((temp->link)!=head)
+    {
+        printf("%d ",temp->data);
+        temp=temp->link;
+    }
+    printf("%d ",temp->data);
+}
+nptr* delete_beg(nptr* head)
+{
+    if(head==NULL)
+    {
+        printf("deletion is not possible\n");
+    }
+    else if(head->link==head)
+    {
+        temp=head;
+        temp->link=NULL;
+        free(temp);
+        head=NULL;
+        
+    }
+    else
+    {
+        p=temp=head;
+        while((temp->link)!=head)
+        {
+            temp=temp->link;
+        }
+        temp->link=p->link;
+        head=p->link;
+     }
+    return head;
+}
+nptr* delete_end(nptr* head)
+{
+    if(head==NULL)
+    {
+        printf("deletion is not possible\n");
+    }
+    else if(head->link==head)
+    {
+        temp=head;
+        temp->link=NULL;
+        free(temp);
+        head=NULL;
+        
+    }
+     else
+    {
+        temp=head;
+        while((temp->link)!=head)
+        {
+            sln=temp;
+            temp=temp->link;
+        }
+        temp->link=NULL;
+        free(temp);
+        sln->link=head;
+    }
+    return head;
+}
+nptr* delete_pos(nptr* head,int pos)
+{
+    if(head==NULL)
+    {
+        printf("deletion is not possible\n");
+    }
+    else if(head->link==head)
+    {
+        temp=head;
+        temp->link=NULL;
+        free(temp);
+        head=NULL;
+        
+    }
+     else
+    {
+        temp=head;int c=1;
+        while((temp->link)!=head && c<=pos-1)
+        {
+            sln=temp;
+            temp=temp->link;
+        }
+        sln->link=temp->link;
+        temp->link=NULL;
+        free(temp);
+    }
+    return head;
+}
+
+
+
