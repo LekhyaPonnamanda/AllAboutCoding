@@ -1,0 +1,23 @@
+bool isPalindrome(int x){
+
+    int r, num_digits = 0, orig_x = x; 
+    if(x<0) return false;// Separate variable to hold original value of x
+    while(x > 0) { // Fixed loop condition to count digits correctly
+        r = x % 10;
+        num_digits++;
+        x = x / 10;
+    }
+    int i = 0, j = num_digits - 1; // Initialize i and j
+    while(i < j) { // Fixed loop condition and comparison
+        int digit_i = (orig_x / (int)pow(10, i)) % 10; // Get digit at position i
+        int digit_j = (orig_x / (int)pow(10, j)) % 10; // Get digit at position j
+        if(digit_i == digit_j) {
+            i++;
+            j--;
+        } else {
+            return false; // If digits don't match, return false immediately
+        }
+    }
+    return true; // If we've reached this point, the number is a palindrome
+
+}
