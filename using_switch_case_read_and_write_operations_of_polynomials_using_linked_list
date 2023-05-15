@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node nptr;
+struct node
+{
+    int coeff,deg;
+    struct node *link;
+};
+nptr* temp,*head,*ptr;int coeff,deg;
+nptr* insert_end(int,int,nptr*);
+void display(nptr*);
+void main()
+{
+    int coeff,deg,ch;
+    printf("1.enter the polynomial expression in decresing order of their degree\n 2.display\n 3.exit\n");
+    printf("enter coefficient and degree for each term\n");
+    while(1)
+    {
+        printf("enter ur choice\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:printf("enter coefficient and degree\n");
+                   scanf("%d %d",&coeff,&deg);
+                   head=insert_end(coeff,deg,head);
+                   break;
+            case 2:display(head);
+                   break;
+            case 3:exit(1);
+        }
+    }
+    
+}
+nptr* insert_end(int coeff,int deg,nptr* head)
+{
+    ptr=(nptr *)malloc(sizeof(nptr));
+    ptr->coeff=coeff;
+    ptr->deg=deg;
+    ptr->link=NULL;
+    if(head==NULL)
+    {
+        head=ptr;
+    }
+    else
+    {
+        temp=head;
+        while((temp->link)!=NULL)
+        {
+            temp=temp->link;
+        }
+        temp->link=ptr;
+        ptr->link=NULL;
+    }
+     return head;
+}
+void display(nptr* head)
+{
+    temp=head;
+    while((temp->link)!=NULL)
+    {
+        printf("%d*x^%d+ ",temp->coeff,temp->deg);
+        temp=temp->link;
+    }
+    printf("%d*x^%d+ ",temp->coeff,temp->deg);
+    printf("0\n");
+}
