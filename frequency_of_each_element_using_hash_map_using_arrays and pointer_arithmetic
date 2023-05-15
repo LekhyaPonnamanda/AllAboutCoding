@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+void Frequency(int arr[], int n)
+{
+    int map[100] = {0}; // assuming the maximum element in the array is 100
+ 
+    for (int i = 0; i < n; i++)
+        map[arr[i]]++;
+ 
+    // Traverse through map and print frequencies
+    for (int i = 0; i < 100; i++) {
+        if (map[i] > 0) {
+            printf("%d %d\n", i, map[i]);
+        }
+    }
+}
+ 
+int main()
+{
+    int arr[] = {10, 25, 10, 15, 10, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    Frequency(arr, n);
+    return 0;
+}
