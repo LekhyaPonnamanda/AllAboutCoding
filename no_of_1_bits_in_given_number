@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void main()
+{
+    char n[90];int count=0;
+    printf("enter a number consistin g of 1 and 0's");
+    scanf("%s",n);
+    unsigned long m=strtoul(n,NULL,2);//standard library function which converts binary to unsigned long integer:here 2 represent base of number system
+    while(m!=0)
+    {
+        if(m&1)
+        {
+            count++;
+        }
+        m>>=1;
+    }
+    printf("no of 1's in entered number=%d\n",count);
+    
+}
