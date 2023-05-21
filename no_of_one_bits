@@ -1,0 +1,20 @@
+//25=11001
+n&1 represent least significant bit 1&1=1->count=1 and 1 is discarded
+we have 1100.n&1-> 0&1=0->count=1.0 is discarded
+110.0&1=0->count=1
+1&1->count=2;
+1&1->count=3
+
+ 
+int hammingWeight(uint32_t n) {
+    int i,count=0;
+    while(n!=0)
+    {
+      if(n&1)
+       {
+         count++;
+       }
+       n>>=1;
+    }
+    return count;
+}
