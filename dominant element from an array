@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main(void) {
+    int i, n, j, count = 0, max = 0;
+    int a[90], b[90];
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements in the array: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        b[i]=0;
+    }
+
+    for (i = 0; i < n; i++) { // Reset count for each element
+        for (j =0; j < n; j++) {
+            if (a[i] == a[j]) {
+                b[i]++;
+            }
+        }
+    }
+    int maxelement=a[0];
+    for (i= 1; i< n; i++) {
+        if (b[maxelement] < b[i]) {
+            maxelement = i;
+        }
+    }
+
+    printf("Dominant element frequency: %d\n", a[maxelement]);
+    return 0;
+}
