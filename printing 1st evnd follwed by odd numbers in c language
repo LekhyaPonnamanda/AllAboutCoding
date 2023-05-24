@@ -1,0 +1,32 @@
+#include <stdio.h>
+int main()
+{
+    int a[90],n,i,j=0,b[90],k=0,c[90];
+    printf("enter size of array\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        if(a[i]%2==0)
+        {
+            b[k]=a[i];
+            k++;
+        }
+        else
+        {
+            c[j]=a[i];
+            j++;
+        }
+    }
+    for(i=0;i<k;i++)
+    {
+        printf("%d ",b[i]);
+    }
+    for(i=0;i<j;i++)
+    {
+        printf("%d ",c[i]);
+    }
+}
