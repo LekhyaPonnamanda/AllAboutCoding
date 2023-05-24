@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include<stdlib.h>
+typedef struct node nptr;
+nptr *head,*temp,*ptr,*sln;
+struct node 
+  {
+    int data;
+    struct node *link;
+  };
+nptr *insert_begin(nptr *head,int ele);
+nptr *duplicate(nptr *);
+void display(nptr *);
+int main()
+{
+    while(1)
+    {
+        printf("\n enter ur choice\n");
+        int ch,ele;
+        scanf("%d",&ch);
+        switch(ch)
+        {
+          case 1:printf("enter element\n");
+                 scanf("%d",&ele);
+                 head=insert_begin(head,ele); 
+                 break;
+          case 2:display(head);break;
+          case 3:exit(1);
+          case 4:head=duplicate(head);
+        }
+    }
+}
+nptr* insert_begin(nptr *head,int ele)
+{
+    ptr=(nptr *)malloc(sizeof(nptr));
+    ptr->data=ele; ptr->link=NULL;
+    if(head==NULL)
+    {
+        head=ptr;
+    }
+    else
+    {
+       ptr->link=head;
+       head=ptr;
+    }
+    return head;
+}
+void display(nptr *head)
+{
+    temp=head;
+    while((temp->link)!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->link;
+    }
+    printf("%d ",temp->data);
+}
+nptr *duplicate(nptr *head)
+{
+    temp=head;
+    while( temp->link!=NULL&&temp!=NULL)
+    {
+        if(temp->data==temp->link->data)
+        {
+           nptr *duplicate_node=temp->link;
+            temp->link=duplicate_node->link;
+            free(duplicate_node);
+        }
+        else
+        {
+            temp=temp->link;
+        }
+    }
+    return head;
+}
+
