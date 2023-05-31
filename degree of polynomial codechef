@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int i, T, N;
+    cin >> T;
+    for (i = 0; i < T; i++) {
+        cin >> N;
+        vector<int> A(N);
+        
+        for (int j = 0; j < N; j++) {
+            cin >> A[j];
+        }
+
+        int degree = N - 1;  // Initialize degree to the highest power
+
+        // Check if the coefficient of the highest power is zero
+        while (degree >= 0 && A[degree] == 0) {
+            degree--;
+        }
+
+        cout << degree << "\n";
+    }
+
+    // Your code goes here
+    return 0;
+}
