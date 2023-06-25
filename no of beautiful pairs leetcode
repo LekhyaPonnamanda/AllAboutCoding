@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+int countBeautifulPairs(int* nums, int length) {
+    int count = 0;
+    char l[length][11];
+
+    for (int i = 0; i < length; i++) {
+        sprintf(l[i], "%d", nums[i]);
+    }
+
+    for (int i = 0; i < length; i++) {
+        for (int j = i + 1; j < length; j++) {
+            if (gcd(l[i][0] - '0', l[j][strlen(l[j]) - 1] - '0') == 1) {
+                count++;
+            }
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    int nums[] = {2,5,1,4};
+    int length = sizeof(nums) / sizeof(nums[0]);
+
+    int result = countBeautifulPairs(nums, length);
+    printf("Count of beautiful pairs: %d\n", result);
+
+    return 0;
+}
